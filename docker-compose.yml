@@ -6,6 +6,7 @@ services:
       - "3000:80"
     depends_on:
       - db
+    entrypoint: ["./wait-for-it.sh", "db:1433", "-t", "120", "--", "dotnet", "Career.dll"]
     environment:
       DB_CONNECTION: "Server=db;Database=Career;User Id=sa; Password=Pa55w0rd2021;"
   db:

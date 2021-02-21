@@ -21,7 +21,6 @@ namespace Career
 		public void ConfigureServices(IServiceCollection services)
 		{
 			var environmentString = System.Environment.GetEnvironmentVariable("DB_CONNECTION");
-			System.Console.WriteLine($"environmentString = {environmentString}");
 			services.AddDbContext<CareerDbContext>(options => 
 				options.UseSqlServer(environmentString ?? Configuration.GetConnectionString("Career"))
 			);
