@@ -1,0 +1,17 @@
+version: '3.4'
+services:
+  app:
+    build: .
+    ports: 
+      - "3000:80"
+    depends_on:
+      - db
+    environment:
+      DB_CONNECTION: "Server=db;Database=Career;User Id=sa; Password=Pa55w0rd2021;"
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Pa55w0rd2021"
+    ports:
+      - "1433:1433"
